@@ -21,7 +21,7 @@ if (!inputDir || !outputDir) {
 // 確保輸出資料夾存在
 mkdirp.sync(outputDir);
 
-// 遞迴處理 Markdown 檔案和圖片
+// 遞迴處理 Markdown 檔案和其他檔案
 function processDirectory(inputDir, outputDir) {
     fs.readdir(inputDir, (err, files) => {
         if (err) {
@@ -47,13 +47,12 @@ function processDirectory(inputDir, outputDir) {
                 } else if (file.endsWith('.md')) {
                     // 如果是 Markdown 檔案，處理圖片並轉換為 HTML
                     processMarkdownFile(inputFilePath, outputFilePath.replace(/\.md$/, '.html'));
-                } else if (file.match(/\.(png|jpg|jpeg|gif)$/)) {
-                    // 複製圖片檔案
-                    const newOutputFilePath = path.join(outputDir, 'images', file);
-                    mkdirp.sync(path.dirname(newOutputFilePath)); // 確保目錄存在
-                    fs.copyFile(inputFilePath, newOutputFilePath, err => {
+                } else {
+                    // 複製其他檔案
+                    mkdirp.sync(path.dirname(outputFilePath)); // 確保目錄存在
+                    fs.copyFile(inputFilePath, outputFilePath, err => {
                         if (err) {
-                            console.error('複製圖片檔案失敗', err);
+                            console.error('複製檔案失敗', err);
                         }
                     });
                 }
@@ -114,7 +113,7 @@ function processMarkdownFile(inputFilePath, outputFilePath) {
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Document</title>
             <style>
-                body { font-family: Arial, sans-serif; line-height: 1.6; }
+                body { font-family: Arial, sans-serif; line-height: 1.6; background-color: #f4f4f4; color: #333; }
                 table { border-collapse: collapse; width: 100%; margin-bottom: 1em; }
                 th, td { border: 1px solid #ddd; padding: 8px; }
                 th { background-color: #f2f2f2; text-align: left; }
@@ -125,41 +124,44 @@ function processMarkdownFile(inputFilePath, outputFilePath) {
                 code { font-family: Monaco, Menlo, Consolas, "Courier New", monospace; }
                 /* Code block */
                 pre code { display: block; overflow-x: auto; padding: 1em; color: #333; background: #f8f8f8; border-radius: 5px; }
-                .hljs-comment,
-                .hljs-quote { color: #999; font-style: italic; }
+                .hljs-comment {
+                    color: #6a9955;
+                    font-style: italic;
+                }
                 .hljs-keyword,
-                .hljs-selector-tag,
-                .hljs-subst { color: #333; font-weight: bold; }
-                .hljs-literal,
-                .hljs-number,
-                .hljs-tag .hljs-attr,
-                .hljs-template-variable,
-                .hljs-variable { color: #008080; }
-                .hljs-doctag,
-                .hljs-string,
-                .hljs-title,
-                .hljs-type { color: #2b91af; }
-                .hljs-attribute,
-                .hljs-built_in,
-                .hljs-builtin-name,
-                .hljs-class .hljs-title,
-                .hljs-title.class_,
-                .hljs-title.class_.inherited__ { color: #2b91af; }
-                .hljs-params { color: #808080; }
-                .hljs-deletion,
-                .hljs-template-tag { color: #2b91af; }
-                .hljs-formula,
-                .hljs-link,
                 .hljs-operator,
-                .hljs-regexp,
-                .hljs-selector-attr,
-                .hljs-selector-class,
-                .hljs-selector-id,
-                .hljs-selector-pseudo,
-                .hljs-selector-tag,
+                .hljs-builtin-name,
+                .hljs-title,
+                .hljs-type {
+                    color: #569cd6;
+                    font-weight: bold;
+                }
+                .hljs-variable,
                 .hljs-string,
-                .hljs-symbol { color: #666; }
-                .hljs-addition { color: #2b91af; }
+                .hljs-class .hljs-title,
+                .hljs-function,
+                .hljs-param {
+                    color: #d69d85;
+                }
+                .hljs-number,
+                .hljs-literal {
+                    color: #b5cea8;
+                }
+                .hljs-tag,
+                .hljs-name,
+                .hljs-attribute {
+                    color: #9cdcfe;
+                }
+                .hljs-regexp,
+                .hljs-symbol {
+                    color: #d4d4d4;
+                }
+                .hljs-deletion {
+                    color: #f44747;
+                }
+                .hljs-addition {
+                    color: #b5cea8;
+                }
             </style>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
         </head>
