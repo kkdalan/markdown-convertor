@@ -1,4 +1,6 @@
-# markdown-convertor 是一個Markdown檔案轉換工具，包含以下常用轉換器：
+# markdown-convertor 
+
+Markdown檔案轉換工具，包含以下常用轉換器：
   - generate-html.js
 
 
@@ -6,7 +8,7 @@
 
 ## generate-html.js
 
-`generate-html3.js` 是一個 Node.js 腳本，用於將 Markdown 文件轉換為 HTML 文件，並處理圖片和超連結。這個腳本遞迴地處理指定資料夾中的所有 Markdown 文件，並將它們轉換為格式化的 HTML 文件，同時支持表格和程式碼區塊的漂亮顯示。
+`generate-html.js` 是一個 Node.js 腳本，用於將 Markdown 文件轉換為 HTML 文件，並處理圖片和超連結。這個腳本遞迴地處理指定資料夾中的所有 Markdown 文件，並將它們轉換為格式化的 HTML 文件，同時支持表格和程式碼區塊的漂亮顯示。
 
 ## 安裝所需套件
 
@@ -35,13 +37,13 @@ npm install markdown-it mkdirp
 2. **執行腳本**：使用以下命令來執行腳本，並指定輸入和輸出資料夾的路徑：
 
    ```bash
-   node generate-html3.js <inputDir> <outputDir>
+   node generate-html.js <inputDir> <outputDir>
    ```
 
    例如，如果您的 Markdown 文件位於 `docs` 資料夾中，並且您希望將生成的 HTML 文件保存到 `html_output` 資料夾中，則可以使用以下命令：
 
    ```bash
-   node generate-html3.js docs html_output
+   node generate-html.js docs html_output
    ```
 
 ### 功能
@@ -57,5 +59,3 @@ npm install markdown-it mkdirp
 - 請確保您的 Markdown 文件中使用的圖片路徑是相對於 Markdown 文件的路徑。
 
 ---
-
-這樣的 README 文件可以幫助其他使用者快速了解如何安裝所需的套件、使用腳本，以及它提供的功能。
