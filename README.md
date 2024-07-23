@@ -21,7 +21,7 @@ Markdown檔案轉換工具，包含以下常用轉換器：
 您可以使用以下命令來安裝這些套件：
 
 ```bash
-npm install markdown-it mkdirp
+npm install markdown-it mkdirp markdown-it-highlightjs
 ```
 
 ## 使用說明

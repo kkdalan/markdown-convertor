@@ -113,7 +113,7 @@ function processMarkdownFile(inputFilePath, outputFilePath) {
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Document</title>
             <style>
-                body { font-family: Arial, sans-serif; line-height: 1.6; background-color: #f4f4f4; color: #333; }
+                body { font-family: Arial, sans-serif; line-height: 1.6; background-color: #f4f4f4; color: #333; margin-left: 50px; margin-right: 50px; }
                 table { border-collapse: collapse; width: 100%; margin-bottom: 1em; }
                 th, td { border: 1px solid #ddd; padding: 8px; }
                 th { background-color: #f2f2f2; text-align: left; }
