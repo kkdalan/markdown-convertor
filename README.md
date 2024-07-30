@@ -11,13 +11,6 @@ Markdown檔案轉換工具，包含以下常用轉換器：
 
 `generate-html.js` 是一個 Node.js 腳本，用於將 Markdown 文件轉換為 HTML 文件，並處理圖片和超連結。這個腳本遞迴地處理指定資料夾中的所有 Markdown 文件，並將它們轉換為格式化的 HTML 文件，同時支持表格和程式碼區塊的漂亮顯示。
 
-安裝最新NodeJS，並設定為預設node
-
-```bash
-nvm install --lts
-nvm alias default node
-```
-
 在使用 `generate-html.js` 之前，您需要安裝以下 Node.js 套件：
 
 - `markdown-it`：Markdown 轉換器，用於將 Markdown 轉換為 HTML。
@@ -35,6 +28,13 @@ npm install markdown-it mkdirp markdown-it-highlightjs
 
 1. 確保您已安裝 Node.js 和 npm。
 2. 安裝所需的 Node.js 套件（見上方安裝說明）。
+
+安裝最新NodeJS，並設定為預設node
+
+```bash
+nvm install --lts
+nvm alias default node
+```
 
 ### 使用腳本
 
